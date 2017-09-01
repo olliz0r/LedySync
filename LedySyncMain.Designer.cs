@@ -39,12 +39,12 @@
             this.columnHeader6 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader7 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.tb_port = new System.Windows.Forms.TextBox();
-            this.btn_banlist = new System.Windows.Forms.Button();
-            this.tb_timeout = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
             this.btn_stop = new System.Windows.Forms.Button();
+            this.label2 = new System.Windows.Forms.Label();
+            this.tb_timeout = new System.Windows.Forms.TextBox();
+            this.btn_banlist = new System.Windows.Forms.Button();
+            this.tb_port = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -128,50 +128,6 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Settings";
             // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(7, 20);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(29, 13);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Port:";
-            // 
-            // tb_port
-            // 
-            this.tb_port.Location = new System.Drawing.Point(93, 18);
-            this.tb_port.Name = "tb_port";
-            this.tb_port.Size = new System.Drawing.Size(100, 20);
-            this.tb_port.TabIndex = 1;
-            this.tb_port.Text = "3000";
-            // 
-            // btn_banlist
-            // 
-            this.btn_banlist.Location = new System.Drawing.Point(199, 43);
-            this.btn_banlist.Name = "btn_banlist";
-            this.btn_banlist.Size = new System.Drawing.Size(75, 23);
-            this.btn_banlist.TabIndex = 2;
-            this.btn_banlist.Text = "BanList";
-            this.btn_banlist.UseVisualStyleBackColor = true;
-            this.btn_banlist.Click += new System.EventHandler(this.btn_banlist_Click);
-            // 
-            // tb_timeout
-            // 
-            this.tb_timeout.Location = new System.Drawing.Point(93, 46);
-            this.tb_timeout.Name = "tb_timeout";
-            this.tb_timeout.Size = new System.Drawing.Size(100, 20);
-            this.tb_timeout.TabIndex = 3;
-            this.tb_timeout.Text = "60";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(6, 51);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(85, 13);
-            this.label2.TabIndex = 4;
-            this.label2.Text = "Timeout (in sec):";
-            // 
             // btn_stop
             // 
             this.btn_stop.Enabled = false;
@@ -183,6 +139,50 @@
             this.btn_stop.UseVisualStyleBackColor = true;
             this.btn_stop.Click += new System.EventHandler(this.btn_stop_Click);
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(6, 51);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(85, 13);
+            this.label2.TabIndex = 4;
+            this.label2.Text = "Timeout (in sec):";
+            // 
+            // tb_timeout
+            // 
+            this.tb_timeout.Location = new System.Drawing.Point(93, 46);
+            this.tb_timeout.Name = "tb_timeout";
+            this.tb_timeout.Size = new System.Drawing.Size(100, 20);
+            this.tb_timeout.TabIndex = 3;
+            this.tb_timeout.Text = "60";
+            // 
+            // btn_banlist
+            // 
+            this.btn_banlist.Location = new System.Drawing.Point(199, 43);
+            this.btn_banlist.Name = "btn_banlist";
+            this.btn_banlist.Size = new System.Drawing.Size(75, 23);
+            this.btn_banlist.TabIndex = 2;
+            this.btn_banlist.Text = "BanList";
+            this.btn_banlist.UseVisualStyleBackColor = true;
+            this.btn_banlist.Click += new System.EventHandler(this.btn_banlist_Click);
+            // 
+            // tb_port
+            // 
+            this.tb_port.Location = new System.Drawing.Point(93, 18);
+            this.tb_port.Name = "tb_port";
+            this.tb_port.Size = new System.Drawing.Size(100, 20);
+            this.tb_port.TabIndex = 1;
+            this.tb_port.Text = "3000";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(7, 20);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(29, 13);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Port:";
+            // 
             // LedySyncMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -193,6 +193,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "LedySyncMain";
             this.Text = "LedySync";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.LedySyncMain_FormClosing);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.ResumeLayout(false);

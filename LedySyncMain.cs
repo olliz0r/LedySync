@@ -21,7 +21,7 @@ namespace WindowsFormsApplication1
         {
             InitializeComponent();
         }
-        private TcpListener tcpListener;
+        private TcpListener tcpListener = null;
         private Thread listenThread;
 
         private static Mutex mut = new Mutex();
@@ -236,6 +236,14 @@ namespace WindowsFormsApplication1
         private void btn_banlist_Click(object sender, EventArgs e)
         {
             Program.bl.ShowDialog();
+        }
+
+        private void LedySyncMain_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (tcpListener != null)
+            {
+                tcpListener.Stop();
+            }
         }
     }
 }
