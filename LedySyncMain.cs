@@ -28,13 +28,14 @@ namespace WindowsFormsApplication1
 
         private Dictionary<string, DateTime> blackList = new Dictionary<string, DateTime>();
         public ArrayList bannedFCs = new ArrayList();
-
+        private int delayInSec = 60;
 
 
         private void button1_Click(object sender, EventArgs e)
         {
             btn_start.Enabled = false;
             btn_stop.Enabled = true;
+            delayInSec = Int32.Parse(tb_timeout.Text);
             this.tcpListener = new TcpListener(IPAddress.Any, Int32.Parse(tb_port.Text));
             this.listenThread = new Thread(new ThreadStart(ListenForClients));
             this.listenThread.Start();
@@ -183,7 +184,7 @@ namespace WindowsFormsApplication1
                     {
                         if (blackList.ContainsKey(friendCode))
                         {
-                            if (blackList[friendCode].AddMinutes(2.0) < DateTime.Now)
+                            if (blackList[friendCode].AddSeconds(delayInSec) < DateTime.Now)
                             {
                                 blackList[friendCode] = DateTime.Now;
                                 retBuffer[0] = 0x01;
