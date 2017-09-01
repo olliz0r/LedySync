@@ -35,7 +35,7 @@ namespace WindowsFormsApplication1
         {
             btn_start.Enabled = false;
             btn_stop.Enabled = true;
-            this.tcpListener = new TcpListener(IPAddress.Any, 3000);
+            this.tcpListener = new TcpListener(IPAddress.Any, Int32.Parse(tb_port.Text));
             this.listenThread = new Thread(new ThreadStart(ListenForClients));
             this.listenThread.Start();
         }
