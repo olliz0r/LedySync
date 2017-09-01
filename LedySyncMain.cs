@@ -177,7 +177,7 @@ namespace WindowsFormsApplication1
                     mut.WaitOne();
                     if (bannedFCs.Contains(friendCode))
                     {
-                        retBuffer[0] = 0x00;
+                        retBuffer[0] = 0x02;
                     }
                     else
                     {
