@@ -5,6 +5,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.IO;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -221,8 +222,8 @@ namespace WindowsFormsApplication1
             string[] row = { DateTime.Now.ToString("h:mm:ss"), console, FC.Insert(4, "-").Insert(9, "-"), trainer, country, region, pokemon };
             var listViewItem = new ListViewItem(row);
 
-            listView1.Items.Add(listViewItem);
-            listView1.Items[listView1.Items.Count - 1].EnsureVisible();
+            lv_log.Items.Add(listViewItem);
+            lv_log.Items[lv_log.Items.Count - 1].EnsureVisible();
         }
 
         private void btn_stop_Click(object sender, EventArgs e)
@@ -244,6 +245,80 @@ namespace WindowsFormsApplication1
             {
                 tcpListener.Stop();
             }
+            Application.Exit();
+        }
+
+        private void btn_Export_Click(object sender, EventArgs e)
+        {
+            ListViewToCSV(lv_log, AppDomain.CurrentDomain.BaseDirectory + "\\Syncexport.csv", true);
+            MessageBox.Show("Exported!");
+        }
+
+        public static void ListViewToCSV(ListView listView, string filePath, bool includeHidden)
+        {
+            //make header string
+            StringBuilder result = new StringBuilder();
+            WriteCSVRow(result, listView.Columns.Count, i => includeHidden || listView.Columns[i].Width > 0, i => listView.Columns[i].Text);
+
+            //export data rows
+            foreach (ListViewItem listItem in listView.Items)
+                WriteCSVRow(result, listView.Columns.Count, i => includeHidden || listView.Columns[i].Width > 0, i => listItem.SubItems[i].Text);
+
+            File.WriteAllText(filePath, result.ToString());
+        }
+
+        private static void WriteCSVRow(StringBuilder result, int itemsCount, Func<int, bool> isColumnNeeded, Func<int, string> columnValue)
+        {
+            bool isFirstTime = true;
+            for (int i = 0; i < itemsCount; i++)
+            {
+                if (!isColumnNeeded(i))
+                    continue;
+
+                if (!isFirstTime)
+                    result.Append(",");
+                isFirstTime = false;
+
+                result.Append(String.Format("\"{0}\"", columnValue(i)));
+            }
+            result.AppendLine();
+        }
+
+        private void ImportCSV()
+        {
+            FileStream srcFS;
+            srcFS = new FileStream(AppDomain.CurrentDomain.BaseDirectory + "\\Syncexport.csv", FileMode.Open);
+            StreamReader srcSR = new StreamReader(srcFS, System.Text.Encoding.Default);
+            srcSR.ReadLine();
+            do
+            {
+                string ins = srcSR.ReadLine();
+                if (ins != null)
+                {
+                    string[] columns = ins.Replace("\"", "").Split(',');
+
+                    ListViewItem lvi = new ListViewItem(columns[0]);
+
+                    for (int i = 1; i < columns.Count(); i++)
+                    {
+                        lvi.SubItems.Add(columns[i]);
+                    }
+
+                    lv_log.Items.Add(lvi);
+                }
+                else break;
+            } while (true);
+            srcSR.Close();
+        }
+
+        private void btn_Import_Click(object sender, EventArgs e)
+        {
+            ImportCSV();
+        }
+
+        private void btn_clear_Click(object sender, EventArgs e)
+        {
+            lv_log.Items.Clear();
         }
     }
 }

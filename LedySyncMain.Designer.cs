@@ -30,7 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LedySyncMain));
             this.btn_start = new System.Windows.Forms.Button();
-            this.listView1 = new System.Windows.Forms.ListView();
+            this.lv_log = new System.Windows.Forms.ListView();
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -45,6 +45,9 @@
             this.btn_banlist = new System.Windows.Forms.Button();
             this.tb_port = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.btn_Export = new System.Windows.Forms.Button();
+            this.btn_Import = new System.Windows.Forms.Button();
+            this.btn_clear = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -58,12 +61,12 @@
             this.btn_start.UseVisualStyleBackColor = true;
             this.btn_start.Click += new System.EventHandler(this.button1_Click);
             // 
-            // listView1
+            // lv_log
             // 
-            this.listView1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.lv_log.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.listView1.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.lv_log.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnHeader1,
             this.columnHeader2,
             this.columnHeader3,
@@ -71,13 +74,13 @@
             this.columnHeader5,
             this.columnHeader6,
             this.columnHeader7});
-            this.listView1.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
-            this.listView1.Location = new System.Drawing.Point(13, 98);
-            this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(605, 498);
-            this.listView1.TabIndex = 18;
-            this.listView1.UseCompatibleStateImageBehavior = false;
-            this.listView1.View = System.Windows.Forms.View.Details;
+            this.lv_log.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
+            this.lv_log.Location = new System.Drawing.Point(13, 98);
+            this.lv_log.Name = "lv_log";
+            this.lv_log.Size = new System.Drawing.Size(605, 393);
+            this.lv_log.TabIndex = 18;
+            this.lv_log.UseCompatibleStateImageBehavior = false;
+            this.lv_log.View = System.Windows.Forms.View.Details;
             // 
             // columnHeader1
             // 
@@ -183,13 +186,52 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Port:";
             // 
+            // btn_Export
+            // 
+            this.btn_Export.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.btn_Export.Location = new System.Drawing.Point(13, 486);
+            this.btn_Export.Name = "btn_Export";
+            this.btn_Export.Size = new System.Drawing.Size(605, 23);
+            this.btn_Export.TabIndex = 20;
+            this.btn_Export.Text = "Export";
+            this.btn_Export.UseVisualStyleBackColor = true;
+            this.btn_Export.Click += new System.EventHandler(this.btn_Export_Click);
+            // 
+            // btn_Import
+            // 
+            this.btn_Import.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.btn_Import.Location = new System.Drawing.Point(13, 516);
+            this.btn_Import.Name = "btn_Import";
+            this.btn_Import.Size = new System.Drawing.Size(605, 23);
+            this.btn_Import.TabIndex = 21;
+            this.btn_Import.Text = "Import";
+            this.btn_Import.UseVisualStyleBackColor = true;
+            this.btn_Import.Click += new System.EventHandler(this.btn_Import_Click);
+            // 
+            // btn_clear
+            // 
+            this.btn_clear.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.btn_clear.Location = new System.Drawing.Point(13, 546);
+            this.btn_clear.Name = "btn_clear";
+            this.btn_clear.Size = new System.Drawing.Size(605, 23);
+            this.btn_clear.TabIndex = 22;
+            this.btn_clear.Text = "Clear";
+            this.btn_clear.UseVisualStyleBackColor = true;
+            this.btn_clear.Click += new System.EventHandler(this.btn_clear_Click);
+            // 
             // LedySyncMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(630, 608);
+            this.ClientSize = new System.Drawing.Size(630, 574);
+            this.Controls.Add(this.btn_clear);
+            this.Controls.Add(this.btn_Import);
+            this.Controls.Add(this.btn_Export);
             this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.listView1);
+            this.Controls.Add(this.lv_log);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "LedySyncMain";
             this.Text = "LedySync";
@@ -203,7 +245,7 @@
         #endregion
 
         private System.Windows.Forms.Button btn_start;
-        private System.Windows.Forms.ListView listView1;
+        private System.Windows.Forms.ListView lv_log;
         private System.Windows.Forms.ColumnHeader columnHeader1;
         private System.Windows.Forms.ColumnHeader columnHeader2;
         private System.Windows.Forms.ColumnHeader columnHeader3;
@@ -218,6 +260,9 @@
         private System.Windows.Forms.Button btn_stop;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox tb_timeout;
+        private System.Windows.Forms.Button btn_Export;
+        private System.Windows.Forms.Button btn_Import;
+        private System.Windows.Forms.Button btn_clear;
     }
 }
 
