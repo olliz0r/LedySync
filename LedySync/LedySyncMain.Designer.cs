@@ -1,4 +1,4 @@
-﻿namespace WindowsFormsApplication1
+﻿namespace LedySync
 {
     partial class LedySyncMain
     {
@@ -48,6 +48,7 @@
             this.btn_Export = new System.Windows.Forms.Button();
             this.btn_Import = new System.Windows.Forms.Button();
             this.btn_clear = new System.Windows.Forms.Button();
+            this.btn_LiveBL = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -117,6 +118,7 @@
             // 
             this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox1.Controls.Add(this.btn_LiveBL);
             this.groupBox1.Controls.Add(this.btn_stop);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.tb_timeout);
@@ -222,6 +224,16 @@
             this.btn_clear.UseVisualStyleBackColor = true;
             this.btn_clear.Click += new System.EventHandler(this.btn_clear_Click);
             // 
+            // btn_LiveBL
+            // 
+            this.btn_LiveBL.Location = new System.Drawing.Point(281, 42);
+            this.btn_LiveBL.Name = "btn_LiveBL";
+            this.btn_LiveBL.Size = new System.Drawing.Size(75, 23);
+            this.btn_LiveBL.TabIndex = 6;
+            this.btn_LiveBL.Text = "Blacklist";
+            this.btn_LiveBL.UseVisualStyleBackColor = true;
+            this.btn_LiveBL.Click += new System.EventHandler(this.btn_LiveBL_Click);
+            // 
             // LedySyncMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -263,6 +275,7 @@
         private System.Windows.Forms.Button btn_Export;
         private System.Windows.Forms.Button btn_Import;
         private System.Windows.Forms.Button btn_clear;
+        private System.Windows.Forms.Button btn_LiveBL;
     }
 }
 

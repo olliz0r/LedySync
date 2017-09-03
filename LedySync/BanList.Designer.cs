@@ -1,4 +1,4 @@
-﻿namespace WindowsFormsApplication1
+﻿namespace LedySync
 {
     partial class BanList
     {
@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(BanList));
             this.tb_List = new System.Windows.Forms.TextBox();
             this.btn_accept = new System.Windows.Forms.Button();
             this.SuspendLayout();
@@ -59,6 +60,7 @@
             this.ClientSize = new System.Drawing.Size(242, 513);
             this.Controls.Add(this.btn_accept);
             this.Controls.Add(this.tb_List);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "BanList";
             this.Text = "BanList";
             this.ResumeLayout(false);

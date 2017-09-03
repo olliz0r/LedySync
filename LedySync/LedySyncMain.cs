@@ -14,7 +14,7 @@ using System.Net.Sockets;
 using System.Net;
 using System.Security.Cryptography;
 
-namespace WindowsFormsApplication1
+namespace LedySync
 {
     public partial class LedySyncMain : Form
     {
@@ -25,17 +25,19 @@ namespace WindowsFormsApplication1
         private TcpListener tcpListener = null;
         private Thread listenThread;
 
-        private static Mutex mut = new Mutex();
+        public static Mutex mut = new Mutex();
 
-        private Dictionary<string, DateTime> blackList = new Dictionary<string, DateTime>();
+        public Dictionary<string, DateTime> blackList = new Dictionary<string, DateTime>();
         public ArrayList bannedFCs = new ArrayList();
-        private int delayInSec = 60;
+        public int delayInSec = 60;
 
 
         private void button1_Click(object sender, EventArgs e)
         {
             btn_start.Enabled = false;
             btn_stop.Enabled = true;
+            tb_port.Enabled = false;
+            tb_timeout.Enabled = false;
             delayInSec = Int32.Parse(tb_timeout.Text);
             this.tcpListener = new TcpListener(IPAddress.Any, Int32.Parse(tb_port.Text));
             this.listenThread = new Thread(new ThreadStart(ListenForClients));
@@ -219,7 +221,7 @@ namespace WindowsFormsApplication1
                 this.Invoke(new Action<string, string, string, string, string, string>(AppendListViewItem), new object[] { console, FC, trainer, country, region, pokemon});
                 return;
             }
-            string[] row = { DateTime.Now.ToString("h:mm:ss"), console, FC.Insert(4, "-").Insert(9, "-"), trainer, country, region, pokemon };
+            string[] row = { DateTime.Now.ToString("h:mm:ss tt"), console, FC.Insert(4, "-").Insert(9, "-"), trainer, country, region, pokemon };
             var listViewItem = new ListViewItem(row);
 
             lv_log.Items.Add(listViewItem);
@@ -232,6 +234,8 @@ namespace WindowsFormsApplication1
             listenThread.Join();
             btn_start.Enabled = true;
             btn_stop.Enabled = false;
+            tb_port.Enabled = true;
+            tb_timeout.Enabled = true;
         }
 
         private void btn_banlist_Click(object sender, EventArgs e)
@@ -319,6 +323,11 @@ namespace WindowsFormsApplication1
         private void btn_clear_Click(object sender, EventArgs e)
         {
             lv_log.Items.Clear();
+        }
+
+        private void btn_LiveBL_Click(object sender, EventArgs e)
+        {
+            Program.blackL.ShowDialog();
         }
     }
 }

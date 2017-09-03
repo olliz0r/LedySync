@@ -4,11 +4,12 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace WindowsFormsApplication1
+namespace LedySync
 {
     static class Program
     {
         public static BanList bl;
+        public static LiveBlacklist blackL;
         public static LedySyncMain main;
         /// <summary>
         /// The main entry point for the application.
@@ -20,6 +21,7 @@ namespace WindowsFormsApplication1
             Application.SetCompatibleTextRenderingDefault(false);
             main = new LedySyncMain();
             bl = new BanList();
+            blackL = new LiveBlacklist();
             Application.Run(main);
         }
     }

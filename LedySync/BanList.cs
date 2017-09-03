@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
 
-namespace WindowsFormsApplication1
+namespace LedySync
 {
     public partial class BanList : Form
     {
@@ -17,6 +17,7 @@ namespace WindowsFormsApplication1
         private void btn_accept_Click(object sender, EventArgs e)
         {
             saveDetails();
+            loadDetails();
             this.Close();
         }
         public BanList()
@@ -36,6 +37,7 @@ namespace WindowsFormsApplication1
 
             for(int i=0; i < lines.Length; i++)
             {
+                lines[i] = lines[i].Replace("-", string.Empty);
                 if (lines[i].Length >= 12)
                 {
                     Program.main.bannedFCs.Add(lines[i].Substring(0, 12)); //removing newline?
