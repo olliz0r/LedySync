@@ -39,6 +39,7 @@
             this.columnHeader6 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader7 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btn_LiveBL = new System.Windows.Forms.Button();
             this.btn_stop = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.tb_timeout = new System.Windows.Forms.TextBox();
@@ -48,7 +49,8 @@
             this.btn_Export = new System.Windows.Forms.Button();
             this.btn_Import = new System.Windows.Forms.Button();
             this.btn_clear = new System.Windows.Forms.Button();
-            this.btn_LiveBL = new System.Windows.Forms.Button();
+            this.columnHeader8 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader9 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -74,7 +76,9 @@
             this.columnHeader4,
             this.columnHeader5,
             this.columnHeader6,
-            this.columnHeader7});
+            this.columnHeader7,
+            this.columnHeader8,
+            this.columnHeader9});
             this.lv_log.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
             this.lv_log.Location = new System.Drawing.Point(13, 98);
             this.lv_log.Name = "lv_log";
@@ -102,17 +106,17 @@
             // columnHeader5
             // 
             this.columnHeader5.Text = "Country";
-            this.columnHeader5.Width = 77;
+            this.columnHeader5.Width = 65;
             // 
             // columnHeader6
             // 
             this.columnHeader6.Text = "Sub Region";
-            this.columnHeader6.Width = 96;
+            this.columnHeader6.Width = 92;
             // 
             // columnHeader7
             // 
             this.columnHeader7.Text = "Pokemon";
-            this.columnHeader7.Width = 117;
+            this.columnHeader7.Width = 72;
             // 
             // groupBox1
             // 
@@ -132,6 +136,16 @@
             this.groupBox1.TabIndex = 19;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Settings";
+            // 
+            // btn_LiveBL
+            // 
+            this.btn_LiveBL.Location = new System.Drawing.Point(281, 42);
+            this.btn_LiveBL.Name = "btn_LiveBL";
+            this.btn_LiveBL.Size = new System.Drawing.Size(75, 23);
+            this.btn_LiveBL.TabIndex = 6;
+            this.btn_LiveBL.Text = "Blacklist";
+            this.btn_LiveBL.UseVisualStyleBackColor = true;
+            this.btn_LiveBL.Click += new System.EventHandler(this.btn_LiveBL_Click);
             // 
             // btn_stop
             // 
@@ -224,15 +238,14 @@
             this.btn_clear.UseVisualStyleBackColor = true;
             this.btn_clear.Click += new System.EventHandler(this.btn_clear_Click);
             // 
-            // btn_LiveBL
+            // columnHeader8
             // 
-            this.btn_LiveBL.Location = new System.Drawing.Point(281, 42);
-            this.btn_LiveBL.Name = "btn_LiveBL";
-            this.btn_LiveBL.Size = new System.Drawing.Size(75, 23);
-            this.btn_LiveBL.TabIndex = 6;
-            this.btn_LiveBL.Text = "Blacklist";
-            this.btn_LiveBL.UseVisualStyleBackColor = true;
-            this.btn_LiveBL.Click += new System.EventHandler(this.btn_LiveBL_Click);
+            this.columnHeader8.Text = "Page";
+            // 
+            // columnHeader9
+            // 
+            this.columnHeader9.Text = "TradeIndex";
+            this.columnHeader9.Width = 69;
             // 
             // LedySyncMain
             // 
@@ -276,6 +289,8 @@
         private System.Windows.Forms.Button btn_Import;
         private System.Windows.Forms.Button btn_clear;
         private System.Windows.Forms.Button btn_LiveBL;
+        private System.Windows.Forms.ColumnHeader columnHeader8;
+        private System.Windows.Forms.ColumnHeader columnHeader9;
     }
 }
 

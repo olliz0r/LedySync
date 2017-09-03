@@ -129,6 +129,8 @@ namespace LedySync
                     string szCountry = "";
                     string szRegion = "";
                     string szPokemon = "";
+                    string szPage = "";
+                    string szIndex = "";
                     for (int i = 0; i < szRest.Length; i++)
                     {
                         if(szRest[i] == '\t')
@@ -162,6 +164,18 @@ namespace LedySync
                                 icounter++;
                                 iStart = i + 1;
                             }
+                            else if (icounter == 5)
+                            {
+                                szPage = szRest.Substring(iStart, i - iStart);
+                                icounter++;
+                                iStart = i + 1;
+                            }
+                            else if (icounter == 6)
+                            {
+                                szIndex = szRest.Substring(iStart, i - iStart);
+                                icounter++;
+                                iStart = i + 1;
+                            }
                         }
                     }
 
@@ -191,7 +205,7 @@ namespace LedySync
                             {
                                 blackList[friendCode] = DateTime.Now;
                                 retBuffer[0] = 0x01;
-                                AppendListViewItem(szConsole, friendCode, szTrainer, szCountry, szRegion, szPokemon);
+                                AppendListViewItem(szConsole, friendCode, szTrainer, szCountry, szRegion, szPokemon, szPage, szIndex);
                             }
                             else
                             {
@@ -202,7 +216,7 @@ namespace LedySync
                         {
                             blackList.Add(friendCode, DateTime.Now);
                             retBuffer[0] = 0x01;
-                            AppendListViewItem(szConsole, friendCode, szTrainer, szCountry, szRegion, szPokemon);
+                            AppendListViewItem(szConsole, friendCode, szTrainer, szCountry, szRegion, szPokemon, szPage, szIndex);
                         }
                     }
                     mut.ReleaseMutex();
@@ -214,14 +228,14 @@ namespace LedySync
             tcpClient.Close();
         }
 
-        public void AppendListViewItem(string console, string FC, string trainer, string country, string region, string pokemon)
+        public void AppendListViewItem(string console, string FC, string trainer, string country, string region, string pokemon, string page, string index)
         {
             if (InvokeRequired)
             {
-                this.Invoke(new Action<string, string, string, string, string, string>(AppendListViewItem), new object[] { console, FC, trainer, country, region, pokemon});
+                this.Invoke(new Action<string, string, string, string, string, string, string, string>(AppendListViewItem), new object[] { console, FC, trainer, country, region, pokemon, page, index});
                 return;
             }
-            string[] row = { DateTime.Now.ToString("h:mm:ss tt"), console, FC.Insert(4, "-").Insert(9, "-"), trainer, country, region, pokemon };
+            string[] row = { DateTime.Now.ToString("h:mm:ss tt"), console, FC.Insert(4, "-").Insert(9, "-"), trainer, country, region, pokemon, page, index };
             var listViewItem = new ListViewItem(row);
 
             lv_log.Items.Add(listViewItem);
