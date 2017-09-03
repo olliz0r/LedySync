@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.ListViewItem listViewItem2 = new System.Windows.Forms.ListViewItem("1234-1234-1234");
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LiveBlacklist));
             this.btn_removeBL = new System.Windows.Forms.Button();
             this.lv_LiveBlackList = new System.Windows.Forms.ListView();
@@ -53,13 +52,13 @@
             this.lv_LiveBlackList.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.lv_LiveBlackList.CheckBoxes = true;
             this.lv_LiveBlackList.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.bl_friendCode,
             this.bl_until});
             this.lv_LiveBlackList.FullRowSelect = true;
-            this.lv_LiveBlackList.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
-            listViewItem2});
             this.lv_LiveBlackList.Location = new System.Drawing.Point(13, 13);
+            this.lv_LiveBlackList.MultiSelect = false;
             this.lv_LiveBlackList.Name = "lv_LiveBlackList";
             this.lv_LiveBlackList.Size = new System.Drawing.Size(587, 577);
             this.lv_LiveBlackList.Sorting = System.Windows.Forms.SortOrder.Ascending;
@@ -79,6 +78,7 @@
             // 
             // btn_Close
             // 
+            this.btn_Close.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btn_Close.Location = new System.Drawing.Point(524, 596);
             this.btn_Close.Name = "btn_Close";
             this.btn_Close.Size = new System.Drawing.Size(75, 23);

@@ -327,6 +327,7 @@ namespace LedySync
 
         private void btn_LiveBL_Click(object sender, EventArgs e)
         {
+            Program.blackL.loadList();
             Program.blackL.ShowDialog();
         }
     }
