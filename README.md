@@ -1,7 +1,9 @@
 # LedySync
 
 ## About
-This additional program is used to sync several instances of Ledybot together to prevent them from trying to trade the same person at the same time and to have a shared list of people that already got traded.
+This additional program is used to sync several instances of Ledybot together to prevent them from trying to trade the same person at the same time and to have a shared list of people that already got traded. To be used with https://github.com/olliz0r/Ledybot
+
+If you are rich and like what you see, feel free to throw me a donation at https://www.paypal.me/olliz0r !
 
 ## Usage
 1. Start LedySync
