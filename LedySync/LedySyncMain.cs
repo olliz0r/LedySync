@@ -29,7 +29,9 @@ namespace LedySync
 
         public Dictionary<string, DateTime> blackList = new Dictionary<string, DateTime>();
         public ArrayList bannedFCs = new ArrayList();
-        public int delayInSec = 60;
+        public ArrayList whiteList = new ArrayList();
+        public int delayInSecBL = 600;
+        public int delayInSecWL = 60;
 
 
         private void button1_Click(object sender, EventArgs e)
@@ -38,7 +40,9 @@ namespace LedySync
             btn_stop.Enabled = true;
             tb_port.Enabled = false;
             tb_timeout.Enabled = false;
-            delayInSec = Int32.Parse(tb_timeout.Text);
+            tb_whitelist.Enabled = false;
+            delayInSecBL = Int32.Parse(tb_timeout.Text);
+            delayInSecWL = Int32.Parse(tb_whitelist.Text);
             this.tcpListener = new TcpListener(IPAddress.Any, Int32.Parse(tb_port.Text));
             this.listenThread = new Thread(new ThreadStart(ListenForClients));
             this.listenThread.Start();
@@ -201,7 +205,12 @@ namespace LedySync
                     {
                         if (blackList.ContainsKey(friendCode))
                         {
-                            if (blackList[friendCode].AddSeconds(delayInSec) < DateTime.Now)
+                            int delay = delayInSecBL;
+                            if (whiteList.Contains(friendCode))
+                            {
+                                delay = delayInSecWL;
+                            }
+                            if (blackList[friendCode].AddSeconds(delay) < DateTime.Now)
                             {
                                 blackList[friendCode] = DateTime.Now;
                                 retBuffer[0] = 0x01;
@@ -250,6 +259,7 @@ namespace LedySync
             btn_stop.Enabled = false;
             tb_port.Enabled = true;
             tb_timeout.Enabled = true;
+            tb_whitelist.Enabled = true;
         }
 
         private void btn_banlist_Click(object sender, EventArgs e)
@@ -259,6 +269,9 @@ namespace LedySync
 
         private void LedySyncMain_FormClosing(object sender, FormClosingEventArgs e)
         {
+            Properties.Settings.Default.timeoutBL = tb_timeout.Text;
+            Properties.Settings.Default.timeoutWL = tb_whitelist.Text;
+            Properties.Settings.Default.Port = tb_port.Text;
             if (tcpListener != null)
             {
                 tcpListener.Stop();
@@ -343,6 +356,19 @@ namespace LedySync
         {
             Program.blackL.loadList();
             Program.blackL.ShowDialog();
+        }
+
+        private void btn_whitelist_Click(object sender, EventArgs e)
+        {
+            Program.wl.ShowDialog();
+        }
+
+        private void LedySyncMain_Load(object sender, EventArgs e)
+        {
+
+            tb_timeout.Text = Properties.Settings.Default.timeoutBL;
+            tb_whitelist.Text = Properties.Settings.Default.timeoutWL;
+            tb_port.Text = Properties.Settings.Default.Port;
         }
     }
 }

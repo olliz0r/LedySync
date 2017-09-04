@@ -18,12 +18,22 @@ namespace LedySync
             LedySyncMain.mut.WaitOne();
             foreach (KeyValuePair<string, DateTime> entry in Program.main.blackList)
             {
-                if (entry.Value.AddSeconds(Program.main.delayInSec) > DateTime.Now)
+                int delay = Program.main.delayInSecBL;
+                bool inWl = Program.main.whiteList.Contains(entry.Key);
+                if (inWl)
+                {
+                    delay = Program.main.delayInSecWL;
+                }
+                if (entry.Value.AddSeconds(delay) > DateTime.Now)
                 {
                     ListViewItem lvi = new ListViewItem();
                     lvi.BackColor = Color.Red;
+                    if (inWl)
+                    {
+                        lvi.BackColor = Color.Green;
+                    }
                     lvi.Text = entry.Key.Insert(4, "-").Insert(9, "-");
-                    lvi.SubItems.Add(entry.Value.AddSeconds(Program.main.delayInSec).ToString("h:mm:ss tt"));
+                    lvi.SubItems.Add(entry.Value.AddSeconds(delay).ToString("h:mm:ss tt"));
                     lv_LiveBlackList.Items.Add(lvi);
                 }
             }

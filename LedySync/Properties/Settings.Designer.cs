@@ -22,5 +22,41 @@ namespace LedySync.Properties {
                 return defaultInstance;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("3000")]
+        public string Port {
+            get {
+                return ((string)(this["Port"]));
+            }
+            set {
+                this["Port"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("600")]
+        public string timeoutBL {
+            get {
+                return ((string)(this["timeoutBL"]));
+            }
+            set {
+                this["timeoutBL"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("60")]
+        public string timeoutWL {
+            get {
+                return ((string)(this["timeoutWL"]));
+            }
+            set {
+                this["timeoutWL"] = value;
+            }
+        }
     }
 }

@@ -9,6 +9,7 @@ namespace LedySync
     static class Program
     {
         public static BanList bl;
+        public static WhiteList wl;
         public static LiveBlacklist blackL;
         public static LedySyncMain main;
         /// <summary>
@@ -22,6 +23,7 @@ namespace LedySync
             main = new LedySyncMain();
             bl = new BanList();
             blackL = new LiveBlacklist();
+            wl = new WhiteList();
             Application.Run(main);
         }
     }

@@ -38,7 +38,12 @@
             this.columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader6 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader7 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader8 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader9 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btn_whitelist = new System.Windows.Forms.Button();
+            this.tb_whitelist = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
             this.btn_LiveBL = new System.Windows.Forms.Button();
             this.btn_stop = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
@@ -49,8 +54,6 @@
             this.btn_Export = new System.Windows.Forms.Button();
             this.btn_Import = new System.Windows.Forms.Button();
             this.btn_clear = new System.Windows.Forms.Button();
-            this.columnHeader8 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader9 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -118,10 +121,22 @@
             this.columnHeader7.Text = "Pokemon";
             this.columnHeader7.Width = 72;
             // 
+            // columnHeader8
+            // 
+            this.columnHeader8.Text = "Page";
+            // 
+            // columnHeader9
+            // 
+            this.columnHeader9.Text = "TradeIndex";
+            this.columnHeader9.Width = 69;
+            // 
             // groupBox1
             // 
             this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox1.Controls.Add(this.btn_whitelist);
+            this.groupBox1.Controls.Add(this.tb_whitelist);
+            this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.btn_LiveBL);
             this.groupBox1.Controls.Add(this.btn_stop);
             this.groupBox1.Controls.Add(this.label2);
@@ -137,9 +152,36 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Settings";
             // 
+            // btn_whitelist
+            // 
+            this.btn_whitelist.Location = new System.Drawing.Point(443, 43);
+            this.btn_whitelist.Name = "btn_whitelist";
+            this.btn_whitelist.Size = new System.Drawing.Size(75, 23);
+            this.btn_whitelist.TabIndex = 9;
+            this.btn_whitelist.Text = "Whitelist";
+            this.btn_whitelist.UseVisualStyleBackColor = true;
+            this.btn_whitelist.Click += new System.EventHandler(this.btn_whitelist_Click);
+            // 
+            // tb_whitelist
+            // 
+            this.tb_whitelist.Location = new System.Drawing.Point(377, 44);
+            this.tb_whitelist.Name = "tb_whitelist";
+            this.tb_whitelist.Size = new System.Drawing.Size(60, 20);
+            this.tb_whitelist.TabIndex = 8;
+            this.tb_whitelist.Text = "60";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(280, 51);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(91, 13);
+            this.label3.TabIndex = 7;
+            this.label3.Text = "Timeout (whitelist)";
+            // 
             // btn_LiveBL
             // 
-            this.btn_LiveBL.Location = new System.Drawing.Point(281, 42);
+            this.btn_LiveBL.Location = new System.Drawing.Point(199, 43);
             this.btn_LiveBL.Name = "btn_LiveBL";
             this.btn_LiveBL.Size = new System.Drawing.Size(75, 23);
             this.btn_LiveBL.TabIndex = 6;
@@ -173,11 +215,11 @@
             this.tb_timeout.Name = "tb_timeout";
             this.tb_timeout.Size = new System.Drawing.Size(100, 20);
             this.tb_timeout.TabIndex = 3;
-            this.tb_timeout.Text = "60";
+            this.tb_timeout.Text = "600";
             // 
             // btn_banlist
             // 
-            this.btn_banlist.Location = new System.Drawing.Point(199, 43);
+            this.btn_banlist.Location = new System.Drawing.Point(362, 15);
             this.btn_banlist.Name = "btn_banlist";
             this.btn_banlist.Size = new System.Drawing.Size(75, 23);
             this.btn_banlist.TabIndex = 2;
@@ -238,15 +280,6 @@
             this.btn_clear.UseVisualStyleBackColor = true;
             this.btn_clear.Click += new System.EventHandler(this.btn_clear_Click);
             // 
-            // columnHeader8
-            // 
-            this.columnHeader8.Text = "Page";
-            // 
-            // columnHeader9
-            // 
-            this.columnHeader9.Text = "TradeIndex";
-            this.columnHeader9.Width = 69;
-            // 
             // LedySyncMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -261,6 +294,7 @@
             this.Name = "LedySyncMain";
             this.Text = "LedySync";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.LedySyncMain_FormClosing);
+            this.Load += new System.EventHandler(this.LedySyncMain_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
@@ -291,6 +325,9 @@
         private System.Windows.Forms.Button btn_LiveBL;
         private System.Windows.Forms.ColumnHeader columnHeader8;
         private System.Windows.Forms.ColumnHeader columnHeader9;
+        private System.Windows.Forms.Button btn_whitelist;
+        private System.Windows.Forms.TextBox tb_whitelist;
+        private System.Windows.Forms.Label label3;
     }
 }
 
